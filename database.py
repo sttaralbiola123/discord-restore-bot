@@ -1,5 +1,5 @@
 import os
-from typing import Optional, Dict
+from typing import Optional, Dict, List
 
 class Database:
     def __init__(self):
@@ -25,6 +25,10 @@ class Database:
 
     def get_all_members(self, guild_id: str):
         return [data for (u, g), data in self.members.items() if g == guild_id]
+
+    # ← Ito ang kulang!
+    def get_verified_members(self, guild_id: str) -> List[dict]:
+        return self.get_all_members(guild_id)
 
     def delete_member(self, user_id: str, guild_id: str):
         key = (user_id, guild_id)
